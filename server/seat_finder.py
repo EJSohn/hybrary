@@ -2,47 +2,53 @@
 
 from bs4 import BeautifulSoup
 import urllib
+import logging
+import logging.handlers
 
-# 비어있는 사물함을 확인하고 반환해주는 함수
-def returnEmptyLoackers(Loackers):
-    # 비어있는 사물함을 저장할 리스트
-    EmptyLoackers = []
+# logger 인스턴스 생성 및 로그 레벨 설정
+logger = logging.getLogger("crumbs")
+logger.setLevel(logging.DEBUG)
 
-    for line in Loackers:
-        for loacker in line.find_all('td'):
-            checkIfEmpty = loacker.find(style="font-size:11px; background-image:url(/image/ko/local/locker/B_box_L.png); padding-top:3px; padding-left:1px; ")
-            if checkIfEmpty is not None:
-                EmptyLoackers.append(checkIfEmpty.b.string)
-    return EmptyLoackers
+# formmater 생성
+formatter = logging.Formatter('[%(levelname)s|%(filename)s:%(lineno)s] %(asctime)s > %(message)s')
+#fileHandler 생성 및 세팅
+fileHandler = logging.FileHandler('./log/finder.log')
+fileHandler.setFormatter(formatter)
+# handler를 logging에 추가.
+logger.addHandler(fileHandler)
 
+def saveLine(LockersTable):
+    returnInfo = []
 
-# electronic lockers
-LockersInfoUrl = "http://library.hanyang.ac.kr/tulip/jsp/theme/hanyang/save_locker.jsp?code=1"
-LockerHtmlBody = urllib.urlopen(LockersInfoUrl).read()
+    Lockers = LockersTable.find_all("td")
+    returnInfo.append(Lockers[1].contents[1].split(":")[1].strip()) # 총 사물함 수
+    returnInfo.append(Lockers[3].contents[1].split(":")[1].strip()) # 잔여 사물함 수
+    returnInfo.append(Lockers[4].contents[0]) # 업데이트 일시분초 
+    # encode unicode to utf-8
+    returnInfo = [each.encode("utf-8") for each in returnInfo]
 
-# makes beautifulsoup object
-lockersSoup = BeautifulSoup(LockerHtmlBody, 'html.parser')
+    return returnInfo
 
-# 갱신되는 테이블이 자리한 섹션을 반환. *top01_01은 갱신 전 섹션.
-firstResult = lockersSoup.find(id="top01_02")
-secondResult = firstResult.find_all("table")
+def returnEmptyLoackers():
+    # electronic lockers
+    LockersInfoUrl = "http://library.hanyang.ac.kr/tulip/jsp/theme/hanyang/save_locker.jsp?code=2"
+    LockerHtmlBody = unicode(urllib.urlopen(LockersInfoUrl).read(), "euc-kr").encode("utf-8")
 
-# 전자사물함A, B
-lockers_A =  secondResult[2].find_all("tr")
-lockers_B = secondResult[5].find_all("tr")
+    # makes beautifulsoup object
+    lockersSoup = BeautifulSoup(LockerHtmlBody, 'html.parser')
 
-# A, B사물함 라인 1~5
-lockersALine = []
-lockersBLine = []
-for i in range(0, 5):
-    lockersALine.append(lockers_A[1 + 2*i])
-    lockersBLine.append(lockers_B[1 + 2*i])
+    # 갱신되는 테이블이 자리한 섹션을 반환. *top01_01 -> 서울캠퍼스, top01_02 -> 에리카 캠퍼스
+    seoulLockers = lockersSoup.find(id="top01_01")
+    ericaLockers = lockersSoup.find(id="top01_02")
 
-# A, B 사물함의 비어있는 자리 리스트.
-lockersAEmpty = returnEmptyLoackers(lockersALine).sort()
-lockersBEmpty = returnEmptyLoackers(lockersBLine).sort()
+    lockerA = seoulLockers.find(bgcolor="#dddddd")
+    lockerB = seoulLockers.find(bgcolor="dddddd")
 
-# 확인.
-print lockersAEmpty, lockersBEmpty
+    # 각 사물함 라인의 총 사물함, 잔여 사물함, 업데이트 일시분초를 차례로 담는 list  
+    lockerAInfo = saveLine(lockerA)
+    lockerBInfo = saveLine(lockerB)
+
+    print lockerAInfo, lockerBInfo
+
 
 # the reading room
