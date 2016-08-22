@@ -21,10 +21,17 @@ def getSeoulEmptyLockers():
 
     return jsonify(returnval)
 
-# 서울캠퍼스 각 열람실의 열람실이름, 총 자리 갯수, 빈 자리의 갯수를 json으로 반환해주는 함수
-@application.route("v1.0/getSeoulEmptyReadingRoom")
-def getSeoulEmptyReadingRoom():
-    returnval = returnReadingRoomInfo()
+# 서울캠퍼스 백남학술정보관 각 열람실의 열람실이름, 총 자리 갯수, 빈 자리의 갯수를 json으로 반환해주는 함수
+@application.route("/v1.0/getBaeknamEmptyReadingRoom")
+def getBaeknamEmptyReadingRoom():
+    returnval = returnReadingRoomInfo(0)
+
+    return jsonify(returnval)
+
+# 서울캠퍼스 법학학술정보관 각 열람실의 열람실이름, 총 자리 갯수, 빈 자리의 갯수를 json으로 반환해주는 함수
+@application.route("/v1.0/getLawEmptyReadingRoom")
+def getLawEmptyReadingRoom():
+    returnval = returnReadingRoomInfo(1)
 
     return jsonify(returnval)
 
