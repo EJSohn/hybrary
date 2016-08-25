@@ -16,9 +16,9 @@ export class LockerPage {
 
     constructor(nav, navParams){
         this.nav = nav;
-        this.lockersInfo = navParams.get("lockersInfo");
 
-        
+        // get lockers Info
+        this.lockersInfo = navParams.get("lockersInfo");
     }
 
     alertOn(event){

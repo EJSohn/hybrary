@@ -24,13 +24,14 @@ export class MainPage {
 
     moveLockerPage(event){
         // move to locker page.
+        var nav = this.nav;
 
         // makes loading
         let loading = Loading.create({
             content: "Loading...",
             dismissOnPageChange: true
         });
-        this.nav.present(loading);
+        nav.present(loading);
 
         // server call and retrieve locker's info
         $.ajax({
@@ -43,16 +44,18 @@ export class MainPage {
             },
             error: function(){
                 // warning
+                loading.dismiss();
+
                 let alert = Alert.create({
                     title: "문제가 발생하였습니다.",
                     subTitle: "네트워크를 확인하고 다시 한 번 시도해주세요.",
                     buttons: ["OK"]
                 });
-                this.nav.preset(alert);
+                nav.preset(alert);
             }
         }).then(()=>{
             // go
-            this.nav.push(LockerPage, {
+            nav.push(LockerPage, {
                 lockersInfo: MainPage.prototype.lockersInfo
             });
         });
