@@ -10,7 +10,14 @@ export class LockerPage {
         return [[NavController], [NavParams]]
     }
 
+    // local variables
+    nav: any;
+    lockersInfo: any;
+
     constructor(nav, navParams){
+        this.nav = nav;
+        this.lockersInfo = navParams.get("lockersInfo");
+
         
     }
 

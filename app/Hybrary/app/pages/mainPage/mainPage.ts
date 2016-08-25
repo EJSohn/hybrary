@@ -16,6 +16,7 @@ export class MainPage {
 
     // local variables.
     nav: any;
+    lockersInfo: any;
 
     constructor(nav, navParams){
         this.nav = nav;
@@ -23,7 +24,38 @@ export class MainPage {
 
     moveLockerPage(event){
         // move to locker page.
-        this.nav.push(LockerPage);
+
+        // makes loading
+        let loading = Loading.create({
+            content: "Loading...",
+            dismissOnPageChange: true
+        });
+        this.nav.present(loading);
+
+        // server call and retrieve locker's info
+        $.ajax({
+            url: "http://hyuis.kr:60/v1.0/getSeoulEmptyLockers",
+            async: true,
+            dataType: "json",
+            success: function(data){
+                // data receive success
+                MainPage.prototype.lockersInfo = data;
+            },
+            error: function(){
+                // warning
+                let alert = Alert.create({
+                    title: "문제가 발생하였습니다.",
+                    subTitle: "네트워크를 확인하고 다시 한 번 시도해주세요.",
+                    buttons: ["OK"]
+                });
+                this.nav.preset(alert);
+            }
+        }).then(()=>{
+            // go
+            this.nav.push(LockerPage, {
+                lockersInfo: MainPage.prototype.lockersInfo
+            });
+        });
     }
 
     moveReadingRoomPage(event){
