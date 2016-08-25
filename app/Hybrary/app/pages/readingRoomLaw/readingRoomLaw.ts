@@ -2,7 +2,7 @@ import {NavController, NavParams, Storage, LocalStorage, SqlStorage, Alert, Load
 import {Component} from "@angular/core";
 
 @Component({
-    templateUrl: 'build/pages/readingRoomLawPage/readingRoomLawPage.html'
+    templateUrl: 'build/pages/readingRoomLaw/readingRoomLaw.html'
 })
 
 export class LawPage {
@@ -12,11 +12,13 @@ export class LawPage {
 
     // local variables
     nav: any;
+    seats: any;
     
     constructor(nav, navParams){
         this.nav = nav;
+        this.seats = navParams.get("lawInfo");
 
         // get lockers Info
-
+        console.log(this.seats);
     }
 }
