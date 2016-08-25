@@ -3,6 +3,7 @@ import {Component} from "@angular/core";
 
 // import components
 import {LockerPage} from '../lockerPage/lockerPage';
+import {ReadingRoomPage} from '../readingRoomPage/readingRoomPage';
 
 @Component({
     templateUrl: 'build/pages/mainPage/mainPage.html'
@@ -23,6 +24,11 @@ export class MainPage {
     moveLockerPage(event){
         // move to locker page.
         this.nav.push(LockerPage);
+    }
+
+    moveReadingRoomPage(event){
+        // move to reading room page.
+        this.nav.push(ReadingRoomPage);
     }
 
 }
