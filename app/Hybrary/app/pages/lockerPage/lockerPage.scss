@@ -17,3 +17,20 @@
 .redClass {
     color: red;
 }
+
+#lockerRefreshButton {
+    position: absolute;
+    bottom: 30px;
+    right: 0px;
+}
+
+#refreshIcon {
+    font-size: 30px;
+}
+
+#lockersInfo {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    font-size: 10px;
+}
