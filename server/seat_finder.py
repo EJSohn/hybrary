@@ -33,14 +33,13 @@ class LibraryTypeError(Exception):
 
 # returnEmptyLoackers에서 사용하는 함수. 로커 테이블을 받아 정보를 가공해 리턴해준다. 
 def saveLine(LockersTable):
-    returnInfo = []
+    returnInfo = {}
 
     Lockers = LockersTable.find_all("td")
-    returnInfo.append(Lockers[1].contents[1].split(":")[1].strip()) # 총 사물함 수
-    returnInfo.append(Lockers[3].contents[1].split(":")[1].strip()) # 잔여 사물함 수
-    returnInfo.append(Lockers[4].contents[0]) # 업데이트 일시분초 
+    returnInfo['full']=(Lockers[1].contents[1].split(":")[1].strip().encode("utf-8")) # 총 사물함 수
+    returnInfo['remain']=(Lockers[3].contents[1].split(":")[1].strip().encode("utf-8")) # 잔여 사물함 수
+    returnInfo['update']=(Lockers[4].contents[0].encode("utf-8")) # 업데이트 일시분초 
     # encode unicode to utf-8
-    returnInfo = [each.encode("utf-8") for each in returnInfo]
 
     return returnInfo
 
