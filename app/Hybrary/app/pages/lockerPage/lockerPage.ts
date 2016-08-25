@@ -13,4 +13,11 @@ export class LockerPage {
     constructor(nav, navParams){
         
     }
+
+    alertOn(event){
+        $("#alertButton").removeAttr("dark");
+        $("#alertButton").addClass("redClass");
+
+        $("#alertText").text("");
+    }
 }
