@@ -1,0 +1,19 @@
+ion-content div.scroll{
+	position: relative;
+	height: 90%;
+}
+
+.webPage {
+	position: relative;
+	width: 100%;
+	height: 108%;
+	border: 2px solid white;
+	padding: 1rem;
+	top: -56px;
+}
+
+.noScroll scroll-content {
+	height:100% !important;
+	overflow: hidden !important;
+}
+

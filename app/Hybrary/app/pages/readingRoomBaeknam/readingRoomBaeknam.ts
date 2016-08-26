@@ -1,6 +1,8 @@
 import {NavController, NavParams, Storage, LocalStorage, SqlStorage, Alert, Loading} from 'ionic-angular';
 import {Component} from "@angular/core";
 
+// import static
+
 @Component({
     templateUrl: 'build/pages/readingRoomBaeknam/readingRoomBaeknam.html'
 })
@@ -20,5 +22,9 @@ export class BaeknamPage {
         // get lockers Info
 
         console.log(this.seats);
+    }
+
+    showSeats(event, RRname){
+
     }
 }

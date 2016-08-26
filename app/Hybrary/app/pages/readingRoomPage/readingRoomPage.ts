@@ -50,7 +50,7 @@ export class ReadingRoomPage {
                     subTitle: "네트워크를 확인하고 다시 한 번 시도해주세요.",
                     buttons: ["OK"]
                 });
-                nav.preset(alert);
+                nav.present(alert);
             }
         }).then(()=>{
             // go
@@ -88,7 +88,7 @@ export class ReadingRoomPage {
                     subTitle: "네트워크를 확인하고 다시 한 번 시도해주세요.",
                     buttons: ["OK"]
                 });
-                nav.preset(alert);
+                nav.present(alert);
             }
         }).then(()=>{
             // go

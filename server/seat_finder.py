@@ -59,7 +59,9 @@ def returnEmptyLoackers():
 
     # 각 사물함 라인의 총 사물함, 잔여 사물함, 업데이트 일시분초를 차례로 담는 list  
     lockerAInfo = saveLine(lockerA)
+    lockerAInfo['name'] = "사물함 A"
     lockerBInfo = saveLine(lockerB)
+    lockerBInfo['name'] = "사물함 B"
 
     return lockerAInfo, lockerBInfo
 
