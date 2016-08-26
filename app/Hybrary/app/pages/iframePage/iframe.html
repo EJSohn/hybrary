@@ -1,8 +1,11 @@
 <ion-navbar *navbar>
-	<ion-title></ion-title>
+	<ion-title>{{RRname}}</ion-title>
 </ion-navbar>
 
 <ion-content class="padding has_subheader noScroll">
 	<iframe class= 'webPage' name='eventsPage' [src]="Src">
 	</iframe>
+    <div id="iframeInfo">
+        <p>가로화면으로 보세요</p>
+    </div>
 </ion-content>

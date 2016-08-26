@@ -2,6 +2,10 @@ import {NavController, NavParams, Storage, LocalStorage, SqlStorage, Alert, Load
 import {Component} from "@angular/core";
 
 // import static
+import {urlInfo} from "../../static/baekNamUrl";
+
+// import component
+import {IframePage} from "../iframePage/iframe";
 
 @Component({
     templateUrl: 'build/pages/readingRoomBaeknam/readingRoomBaeknam.html'
@@ -25,6 +29,13 @@ export class BaeknamPage {
     }
 
     showSeats(event, RRname){
+        // show iframe
 
+        // find url that iframe will show
+        var showSrc = urlInfo[RRname.trim()];
+        this.nav.push(IframePage, {
+            showSrc: showSrc,
+            RRname: RRname
+        });
     }
 }
