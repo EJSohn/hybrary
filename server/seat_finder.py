@@ -78,7 +78,7 @@ def returnReadingRoomInfo(libraryType):
     if libraryType==0:
         RRInfoUrl = "http://166.104.182.141/seats/domian5.asp"   # url 변수
         tableEndLine = 12   # 파싱할 때 테이블의 경계를 표시하기 위한 변수.
-        rangeEndVal = 8 # 백남과 법학 학술 정보관의 열람실 수 차이로 인한 변수
+        rangeEndVal = 6 # 백남과 법학 학술 정보관의 열람실 수 차이로 인한 변수
 
     elif libraryType==1:
         RRInfoUrl = "http://166.104.182.141/seatl/domian5.asp"

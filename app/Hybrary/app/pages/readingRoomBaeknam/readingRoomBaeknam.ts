@@ -30,7 +30,8 @@ export class BaeknamPage {
 
     showSeats(event, RRname){
         // show iframe
-
+        console.log(RRname);
+        console.log(urlInfo);
         // find url that iframe will show
         var showSrc = urlInfo[RRname.trim()];
         this.nav.push(IframePage, {
