@@ -99,6 +99,7 @@ def returnReadingRoomInfo(libraryType):
     ReadingRoomsInfo = []   #전체 열람실 좌석정보를 담을 리스트 선언
     for RR in range(0, rangeEndVal ):
         tmpRR = {}   # 각 열람실 좌석 정보를 담을 딕셔너리 선언
+        tmpRR['id'] = RR
         tmpRR["RRname"] = ReadingRooms[RR].find_all("td")[1].find("a").contents[0]
         tmpRR["totalSeat"] = int(ReadingRooms[RR].find_all("td")[2].find("font").contents[0]) #string to int
         tmpRR["remainSeat"] = int(ReadingRooms[RR].find_all("td")[4].find("font").contents[0])
