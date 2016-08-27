@@ -1,4 +1,4 @@
-import {NavController, NavParams, Storage, LocalStorage, SqlStorage, Alert, Loading} from 'ionic-angular';
+import {NavController, NavParams, Storage, LocalStorage, SqlStorage, Alert ,Loading} from 'ionic-angular';
 import {Component} from "@angular/core";
 
 @Component({
