@@ -28,17 +28,15 @@ export class LawPage {
         console.log(this.seats);
     }
 
-    showSeats(event, RRname){
+    showSeats(event, RRname, id){
         // show iframe
 
-        console.log("why: /  /"+RRname);
-        console.log(urlInfo);
-
         // find url that iframe will show
-        var showSrc = urlInfo[RRname.replace("  "," ").trim()];
+        var showSrc = urlInfo[id];
         this.nav.push(IframePage, {
             showSrc: showSrc,
-            RRname: RRname
+            RRname: RRname,
+            id: id
         });
     }
 }
