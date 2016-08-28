@@ -1,33 +1,26 @@
 <ion-header>
     <ion-navbar>
         <ion-title>전자 사물함</ion-title>
+        <ion-buttons end>
+            <button royal (click)="dataUpdate($event)">
+                <ion-icon name="md-refresh" id="refreshIcon"></ion-icon>
+            </button>
+        </ion-buttons>
     </ion-navbar>
 </ion-header>
 
-<ion-content style="background-color:#F8F8F8;">
+<ion-content style="width: 100%; height:100%;">
     <!--button area -->
     <div id="lockerButtonsDiv">
         <center>
             <div *ngFor="let locker of lockers">
-                <button class="lockerButton">
-                    <p>{{locker.name}} 남은 로커: {{locker.remain}}/{{locker.full}}</p>
+                <button main class="lockerButton">
+                    <img src="../assets/image/locker.png" id="lockerImg">
+                    <p id="inLockerButtonP">{{locker.name}} 남은 로커: {{locker.remain}}/{{locker.full}}</p>
                 </button>
                 <p id="lockerUpdate">업데이트: {{locker.update}}</p>
             </div>
         </center>
-    </div>
-    <!-- info area -->
-    <div id="lockersInfo">
-        <p>사물함 정보는 1분 단위로 갱신됩니다.</p>
-        <p>업데이트 버튼을 눌러주세요.</p>
-    </div>
-
-    <!-- refresh area -->
-    <div id="lockerRefresh">
-        <button dark clear (click)="dataUpdate($event)" id="lockerRefreshButton">
-            <ion-icon name="md-refresh" id="refreshIcon"></ion-icon>
-            <span id="refreshText">업데이트</span>
-        </button>
     </div>
 
     <!-- push notice area -->
@@ -38,3 +31,4 @@
           </button>
     </div>
 </ion-content>
+

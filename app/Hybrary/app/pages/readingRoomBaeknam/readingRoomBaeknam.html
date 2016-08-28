@@ -9,8 +9,8 @@
     <div id="RRButtonsDiv">
         <center>
             <p id="readingRoomUpdate">업데이트: {{seats.Date}}</p>
-            <div *ngFor="let seat of seats.ReadingRoomsInfo">
-                <button round class="readingRoomButton" (click)="showSeats($event, seat.RRname, seat.id)">
+            <div *ngFor="let seat of seats.ReadingRoomsInfo" class="RRButtonDiv">
+                <button outline round main class="readingRoomButton" (click)="showSeats($event, seat.RRname, seat.id)">
                     <p>남은 자리: {{seat.remainSeat}}/{{seat.totalSeat}}</p>
                 </button>
                 <div id="readingRoomName">
@@ -19,6 +19,7 @@
             </div>
         </center>
     </div>
-    <!-- info area -->
+   
+   <div class="footer"></div>
 
 </ion-content>
