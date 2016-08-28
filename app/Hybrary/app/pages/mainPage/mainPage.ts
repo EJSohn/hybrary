@@ -43,7 +43,7 @@ export class MainPage {
             subTitle: "네트워크를 확인하고 다시 한 번 시도해주세요.",
             buttons: ["OK"]
         });
-        nav.present(loading);
+        loading.present();
 
         // server call and retrieve locker's info
         $.ajax({
@@ -57,7 +57,7 @@ export class MainPage {
             error: function(){
                 // warning
                 loading.dismiss();
-                nav.preset(alert);
+                alert.present();
             }
         }).then(()=>{
             // go

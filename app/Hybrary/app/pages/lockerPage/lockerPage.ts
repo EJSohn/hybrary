@@ -26,10 +26,31 @@ export class LockerPage {
     }
 
     alertOn(event){
-        $("#alertButton").removeAttr("dark");
-        $("#alertButton").addClass("redClass");
-
-        $("#alertText").text("");
+        // make phone number input alert
+        let alert = this.alertCtrl.create({
+            title: "알림 예약하기",
+            message: "메세지 알림을 위해 핸드폰 번호를 입력해주세요",
+            inputs: [
+                {
+                    phone: "핸드폰 번호",
+                    placeholder: "phone number"
+                },
+            ],
+            buttons: [
+                {
+                    text: "취소",
+                    role: "cancel",
+                },
+                {
+                    text: "예약",
+                    handler: data => {
+                        console.log(data.phone);
+                    }
+                }
+            ]
+        });
+        alert.present();
+        console.log("테스트한다");
     }
 
     dataUpdate(event){
@@ -40,7 +61,7 @@ export class LockerPage {
             content: "Loading...",
             dismissOnPageChange: true
         });
-        this.nav.present(loading);
+        loading.present();
 
         $.ajax({
             url: "http://hyuis.kr:60/v1.0/getSeoulEmptyLockers",
@@ -49,7 +70,6 @@ export class LockerPage {
             success: function(data){
                 // data receive success
                 LockerPage.prototype.lockers = data;
-                loading.dismiss();
             },
             error: function(){
                 // warning
@@ -60,7 +80,7 @@ export class LockerPage {
                     subTitle: "네트워크를 확인하고 다시 한 번 시도해주세요.",
                     buttons: ["OK"]
                 });
-                nav.preset(alert);
+                alert.present();
             }
         }).then(()=>{
             this.lockers = LockerPage.prototype.lockers;

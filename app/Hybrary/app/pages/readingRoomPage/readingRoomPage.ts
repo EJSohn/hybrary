@@ -40,7 +40,7 @@ export class ReadingRoomPage {
             subTitle: "네트워크를 확인하고 다시 한 번 시도해주세요.",
             buttons: ["OK"]
         });
-        nav.present(loading);
+        loading.present();
 
         // server call and retrieve locker's info
         $.ajax({
@@ -54,7 +54,7 @@ export class ReadingRoomPage {
             error: function(){
                 // warning
                 loading.dismiss();
-                nav.present(alert);
+                alert.present();
             }
         }).then(()=>{
             // go
@@ -79,7 +79,7 @@ export class ReadingRoomPage {
             subTitle: "네트워크를 확인하고 다시 한 번 시도해주세요.",
             buttons: ["OK"]
         });
-        nav.present(loading);
+        loading.present();
 
         // server call and retrieve locker's info
         $.ajax({
@@ -93,7 +93,7 @@ export class ReadingRoomPage {
             error: function(){
                 // warning
                 loading.dismiss();
-                nav.present(alert);
+                alert.present();
             }
         }).then(()=>{
             // go
