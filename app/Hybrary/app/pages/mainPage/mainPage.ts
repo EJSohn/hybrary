@@ -7,6 +7,8 @@ import {LockerPage} from '../lockerPage/lockerPage';
 import {ReadingRoomPage} from '../readingRoomPage/readingRoomPage';
 import {LawPage} from '../readingRoomLaw/readingRoomLaw';
 import {BaeknamPage} from "../readingRoomBaeknam/readingRoomBaeknam";
+import {HybraryPage} from "../hybraryPage/hybraryPage";
+import {DeveloperPage} from "../developerPage/developerPage";
 
 @Component({
     templateUrl: 'build/pages/mainPage/mainPage.html'
@@ -31,6 +33,14 @@ export class MainPage {
         this.loadingCtrl = loadingCtrl;
         this.menuCtrl = menuCtrl;
         this.alertCtrl = alertCtrl;
+    }
+
+    moveToHybraryPage(event){
+        this.nav.push(HybraryPage);
+    }
+
+    moveToDeveloperPage(event){
+        this.nav.push(DeveloperPage);
     }
 
     openMenu(event){

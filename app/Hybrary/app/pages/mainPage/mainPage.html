@@ -18,10 +18,10 @@
         앱 소개
     </ion-item>
     <ion-list style="position:relative;top:-16px;">
-      <button ion-item (click)="openPage(loginPage)">
+      <button ion-item (click)="moveToHybraryPage($event)">
         하이브러리
       </button>
-      <button ion-item (click)="openPage(signupPage)">
+      <button ion-item (click)="moveToDeveloperPage($event)">
         개발자
       </button>
     </ion-list>
@@ -46,12 +46,5 @@
             <button dark clear class="mainButton" (click)="moveReadingRoomPage($event)"><img id="rrImg" src="assets/image/library.png"></button>
             <button dark clear class="mainButton" (click)="moveLockerPage($event)"><img id="lockersImg" src="assets/image/lockers.png"></button>
         </center>
-    </div>
-
-    <!-- info area -->
-    <div id="github">
-        <a href="https://github.com/EJSohn/hybrary">
-            <ion-icon name="logo-github" id="githubLogo"></ion-icon>
-        </a>
     </div>
 </ion-content>
