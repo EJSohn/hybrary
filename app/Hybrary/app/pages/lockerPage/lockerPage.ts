@@ -35,12 +35,14 @@ export class LockerPage {
         this.storage.get("phone").then((phone)=>{
             if(phone!=undefined){
                 this.phone = phone;
+            } else {
+                this.phone = "";
             }
         });
     }
 
     alertOn(event){
-        console.log(this.phone);
+
         var toastCtrl = this.toastCtrl;
         // make phone number input alert
         let alert = this.alertCtrl.create({
@@ -49,7 +51,8 @@ export class LockerPage {
             inputs: [
                 {
                     name: "phone",
-                    placeholder: "phone number"
+                    placeholder: "phone number",
+                    value: this.phone
                 },
             ],
             buttons: [
@@ -114,12 +117,13 @@ export class LockerPage {
                 }
             ]
         });
-        alert.present().then(()=>{
-            if(this.phone!=undefined){
-                $(".alert-input").val(this.phone);
-                $(".alert-input").attr("ng-reflect-model",this.phone);
-            }
-        });
+        alert.present();
+        // .then(()=>{
+        //     if(this.phone!=undefined){
+        //         $(".alert-input").val(this.phone);
+        //         $(".alert-input").attr("ng-reflect-model",this.phone);
+        //     }
+        // });
         
     }
 
