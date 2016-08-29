@@ -11,8 +11,11 @@
             <p id="readingRoomUpdate">업데이트: {{seats.Date}}</p>
             <div *ngFor="let seat of seats.ReadingRoomsInfo" class="RRButtonDiv">
                 <button outline round main class="readingRoomButton" (click)="showSeats(event, seat.RRname, seat.id)">
-                    <p>{{seat.RRname}} 남은 자리: {{seat.remainSeat}}/{{seat.totalSeat}}</p>
+                    <p>남은 자리: {{seat.remainSeat}}/{{seat.totalSeat}}</p>
                 </button>
+                <div id="readingRoomName">
+                    {{seat.RRname}}
+                </div>
             </div>
         </center>
     </div>
