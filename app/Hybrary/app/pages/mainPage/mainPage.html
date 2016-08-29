@@ -1,6 +1,39 @@
+<ion-menu [content]="mycontent">
+  <ion-toolbar>
+    <ion-title>지름길</ion-title>
+  </ion-toolbar>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="moveToBaeknam($event)">
+        열람실 (백남)
+      </button>
+      <button ion-item (click)="moveToLaw($event)">
+        열람실 (법도)
+      </button>
+      <button ion-item (click)="moveLockerPage($event)">
+        전자사물함 (백남)
+      </button>
+    </ion-list>
+    <ion-item id="app-info">
+        앱 소개
+    </ion-item>
+    <ion-list style="position:relative;top:-16px;">
+      <button ion-item (click)="openPage(loginPage)">
+        하이브러리
+      </button>
+      <button ion-item (click)="openPage(signupPage)">
+        개발자
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
 <ion-header>
-    <ion-navbar>
-        <ion-title style="text-align:center;">
+    <ion-navbar #mycontent>
+        <button menuToggle>
+            <ion-icon name='menu' (click)="openMenu($event)"></ion-icon>
+        </button>
+        <ion-title style="text-align:center;position:relative;right:6%;">
             <img id="title-img" src="assets/image/lion.png"><span id="app-title">하이브러리</span>
         </ion-title>
     </ion-navbar>
@@ -16,9 +49,6 @@
     </div>
 
     <!-- info area -->
-    <div id="mail">
-        <ion-icon name="md-mail"></ion-icon>
-    </div>
     <div id="github">
         <a href="https://github.com/EJSohn/hybrary">
             <ion-icon name="logo-github" id="githubLogo"></ion-icon>

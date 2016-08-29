@@ -7,7 +7,7 @@ import {MainPage} from './pages/mainPage/mainPage';
 
 
 @Component({
-  template: '<ion-nav [root]="rootPage"></ion-nav>'
+  templateUrl: "build/app.html"
 })
 export class MyApp {
 
