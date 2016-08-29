@@ -36,7 +36,7 @@ export class LockerPage {
             if(phone!=undefined){
                 this.phone = phone;
             }
-        })
+        });
     }
 
     alertOn(event){
@@ -95,6 +95,8 @@ export class LockerPage {
                                     toast.present();
                                 }
                             }).then(()=>{
+                                console.log("성공한 형식");
+                                console.log(typeof(data.phone));
                                 this.storage.set("phone", data.phone);
                             });
                         } else {
@@ -115,6 +117,7 @@ export class LockerPage {
         alert.present().then(()=>{
             if(this.phone!=undefined){
                 $(".alert-input").val(this.phone);
+                $(".alert-input").attr("ng-reflect-model",this.phone);
             }
         });
         
