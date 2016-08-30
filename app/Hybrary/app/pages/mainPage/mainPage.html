@@ -1,40 +1,10 @@
-<ion-menu [content]="mycontent">
-  <ion-toolbar>
-    <ion-title>지름길</ion-title>
-  </ion-toolbar>
-  <ion-content>
-    <ion-list>
-      <button ion-item (click)="moveToBaeknam($event)">
-        열람실 (백남)
-      </button>
-      <button ion-item (click)="moveToLaw($event)">
-        열람실 (법도)
-      </button>
-      <button ion-item (click)="moveLockerPage($event)">
-        전자사물함 (백남)
-      </button>
-    </ion-list>
-    <ion-item id="app-info">
-        앱 소개
-    </ion-item>
-    <ion-list style="position:relative;top:-16px;">
-      <button ion-item (click)="moveToHybraryPage($event)">
-        하이브러리
-      </button>
-      <button ion-item (click)="moveToDeveloperPage($event)">
-        개발자
-      </button>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-
 <ion-header>
-    <ion-navbar #mycontent>
+    <ion-navbar>
         <button menuToggle>
             <ion-icon name='menu' (click)="openMenu($event)"></ion-icon>
         </button>
-        <ion-title style="text-align:center;position:relative;right:6%;">
-            <img id="title-img" src="assets/image/lion.png"><span id="app-title">하이브러리</span>
+        <ion-title>
+            <img id="title-img" src="assets/image/lion.png">
         </ion-title>
     </ion-navbar>
 </ion-header>

@@ -1,2 +1,31 @@
+<ion-menu [content]="mycontent">
+  <ion-toolbar>
+    <ion-title>지름길</ion-title>
+  </ion-toolbar>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="moveToBaeknam($event)">
+        열람실 (백남)
+      </button>
+      <button ion-item (click)="moveToLaw($event)">
+        열람실 (법도)
+      </button>
+      <button ion-item (click)="moveLockerPage($event)">
+        전자사물함 (백남)
+      </button>
+    </ion-list>
+    <ion-item id="app-info">
+        앱 소개
+    </ion-item>
+    <ion-list style="position:relative;top:-16px;">
+      <button ion-item (click)="moveToHybraryPage($event)">
+        하이브러리
+      </button>
+      <button ion-item (click)="moveToDeveloperPage($event)">
+        개발자
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-nav #mycontent [root]="rootPage"></ion-nav>
